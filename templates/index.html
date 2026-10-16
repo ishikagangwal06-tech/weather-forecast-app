@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Forecast App</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="page-header">
+            <p class="eyebrow">YOUR WEATHER DASHBOARD</p>
+            <h1>Weather Forecast</h1>
+            <p class="subtitle">
+                Current conditions and your next 10 days
+            </p>
+        </header>
+
+        <!-- City search form -->
+        <form id="weather-form" class="search-form">
+            <input
+                type="text"
+                id="city-input"
+                placeholder="Search a city, e.g. Mumbai"
+                aria-label="City name"
+                required
+            >
+
+            <button type="submit" id="search-button">
+                Search
+            </button>
+        </form>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <!-- Current weather section -->
+        <section id="current-card" class="current-card" hidden>
+            <div class="current-top">
+                <div>
+                    <p class="eyebrow">CURRENT WEATHER</p>
+                    <h2 id="location"></h2>
+                    <p id="current-date" class="muted"></p>
+                </div>
+
+                <div class="current-icon" id="current-icon">☀️</div>
+            </div>
+
+            <p id="condition" class="condition"></p>
+
+            <div class="temperature-row">
+                <span id="temperature" class="big-temperature"></span>
+                <span class="temperature-unit">°C</span>
+            </div>
+
+            <p class="feels-like">
+                Feels like <span id="feels-like"></span>°C
+            </p>
+
+            <div class="current-details">
+                <div class="detail">
+                    <span>💧 Humidity</span>
+                    <strong id="humidity"></strong>
+                </div>
+
+                <div class="detail">
+                    <span>💨 Wind speed</span>
+                    <strong id="wind-speed"></strong>
+                </div>
+
+                <div class="detail">
+                    <span>🌧️ Precipitation</span>
+                    <strong id="precipitation"></strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ten-day forecast section -->
+        <section id="forecast-section" class="forecast-section" hidden>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PLAN AHEAD</p>
+                    <h2>10-Day Forecast</h2>
+                </div>
+                <span class="forecast-label">Daily outlook</span>
+            </div>
+
+            <div id="forecast-list" class="forecast-list"></div>
+        </section>
+
+        <footer>
+            Weather data provided by
+            <a href="https://open-meteo.com/" target="_blank"
+               rel="noopener noreferrer">Open-Meteo</a>
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
